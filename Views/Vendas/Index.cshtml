@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ComicShop.Models.Venda>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Vendas</h1>
+
+<p>
+    <a asp-action="Create">Criar nova venda</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quadrinho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataVenda)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quadrinho.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataVenda)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVenda">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdVenda">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdVenda">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

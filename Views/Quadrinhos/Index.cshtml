@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ComicShop.Models.Quadrinho>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quadrinhos</h1>
+
+<p>
+    <a asp-action="Create">Criar novo quadrinho</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeEstoque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeEstoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editora.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdQuadrinho">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdQuadrinho">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdQuadrinho">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
